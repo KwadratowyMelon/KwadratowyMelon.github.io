@@ -1,0 +1,27 @@
+.mario__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.mario__image {
+    height: 50vh;
+    width: 75vh;
+}
+
+
+/****** MEDIA QUERIES (MEDIUM DEVICES) ********/
+@media screen and (max-width: 1024px) {
+    .mario__container {
+        gap: 1rem;
+    }
+
+}   
+
+/****** MEDIA QUERIES (SMALL DEVICES) ********/
+@media screen and (max-width: 600px) {
+    .mario__container {
+        gap: 0.5rem;
+    }
+}
