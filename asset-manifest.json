@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.95f4ff2e.css",
-    "main.js": "/static/js/main.d4a17e82.js",
+    "main.css": "/static/css/main.726bcc54.css",
+    "main.js": "/static/js/main.346c9838.js",
     "static/media/golden-frame-blue-background.jpg": "/static/media/golden-frame-blue-background.ae500e5044098b683b56.jpg",
     "static/media/moje_zdjecie.png": "/static/media/moje_zdjecie.b9cd97055b27b40bbcec.png",
     "static/media/block_panel.jpg": "/static/media/block_panel.e86cc6361ffa3296580a.jpg",
     "static/media/img2.jpg": "/static/media/img2.8a6bc74faee96b705a4b.jpg",
     "static/media/img1.jpg": "/static/media/img1.85e1310a90db1762b83b.jpg",
-    "static/media/cv.pdf": "/static/media/cv.fece92cc02fb2158ab44.pdf",
+    "static/media/cv.pdf": "/static/media/cv.564f4c7cc4a0babd618e.pdf",
     "static/media/cpp_code_snapshot.png": "/static/media/cpp_code_snapshot.b3cd263f6013cd27d539.png",
     "static/media/mario_stage.png": "/static/media/mario_stage.d1d62ffcf4a5b1bc8871.png",
     "static/media/InterferometrMichelsona.png": "/static/media/InterferometrMichelsona.7803bbc1f27984436dd7.png",
     "index.html": "/index.html",
-    "main.95f4ff2e.css.map": "/static/css/main.95f4ff2e.css.map",
-    "main.d4a17e82.js.map": "/static/js/main.d4a17e82.js.map"
+    "main.726bcc54.css.map": "/static/css/main.726bcc54.css.map",
+    "main.346c9838.js.map": "/static/js/main.346c9838.js.map"
   },
   "entrypoints": [
-    "static/css/main.95f4ff2e.css",
-    "static/js/main.d4a17e82.js"
+    "static/css/main.726bcc54.css",
+    "static/js/main.346c9838.js"
   ]
 }
