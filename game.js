@@ -15,6 +15,7 @@ let CURRENT_JUMP_FORCE = JUMP_FORCE
 let isJumping = true
 const score = 0
 const DEATH_FALL = 400
+let proceed_info = null
 
 
 loadRoot('https://i.imgur.com/')
@@ -36,6 +37,16 @@ loadSprite('blue-brick', '3e5YRQd.png')
 loadSprite('blue-steel', 'gqVoI2b.png')
 loadSprite('blue-evil-shroom', 'SvV4ueD.png')
 loadSprite('blue-surprise', 'RMqCc1G.png')
+loadSprite('boss-right', 'W947Xat.png')
+loadSprite('boss-left', 'HrWIZLv.png')
+loadSprite('evil-turtle-let', 'uxiVeD1.png')
+loadSprite('evil-turtle-right', '5bthqZZ.png')
+loadSprite('princess', 'Ij9g6V5.png')
+loadSprite('small-castle', 'Y6hml1u.png')
+loadSprite('big-castle', 'fIEzCGp.png')
+loadSprite('single-cloud', 'gRTmf8Z.png')
+loadSprite('cloud', 'ywQN1pE.png')
+
 
 
 scene("game", ({level, score}) => {
@@ -44,9 +55,9 @@ scene("game", ({level, score}) => {
     const maps = [
 
     [
-        '                                  ',
-        '                                  ',
-        '                                  ',
+        '                  e         e     ',
+        '       r      r       r           ',
+        '                           e      ',
         '                                  ',
         '                                  ',
         '                                  ',
@@ -73,17 +84,17 @@ scene("game", ({level, score}) => {
         '============================ =======',
     ],
     [
-        '                                  ',
-        '                                  ',
-        '                                  ',
-        '                                  ',
-        '                                  ',
-        '                                  ',
-        '      =%%=*=%=                    ',
-        '                                  ',
-        '                         -+       ',
-        '                ^    ^ ? ()   ????',
-        '========== ============= ==   ====',
+        '                                                            ',
+        '                                                            ',
+        '                                                            ',
+        '                                                            ',
+        '                                      %%%==                 ',
+        '                               %                            ',
+        '      =%%=*=%=                                              ',
+        '                                      =======               ',
+        '                               =                   -+       ',
+        ' ?                 ^          ===              ^ ? ()   ????',
+        '========== ======================================= ==   ====',
     ],
     [
         
@@ -102,31 +113,66 @@ scene("game", ({level, score}) => {
         '===========================  =======',
     ],
     [
-        '&                                    &',
-        '&                                    &',
-        '&                                    &',
-        '&                                    &',
-        '&                                    &',
-        '&                                    &',
-        '&      @@@@@@@@         x            &',
-        '&                     x x            &',
-        '&                   x x x  x     -+  &',
-        '&        z    z   x x x x  x     ()  &',
-        '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
+        '&          r            r  r           e                    r     &',
+        '&               r         r        x      r                       &',
+        '&      r               e           x x           x xxx            &',
+        '&                                x x x         x x             @@@&',
+        '&                                x x x x     x x x                &',
+        '&                              x x x x x   x x x x       xxxxxxxxx&',
+        '&      @@@@@@@@         x      x x x x x x x x x x                &',
+        '&                     x x    x x x x x x x x x x x                &',
+        '&                   x x x  x x x x x x x x x x x x            -+  &',
+        '&        z    z   x x x x                        x     z      ()  &',
+        '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
     ],
     [
         '&                                    &',
         '&                                    &',
         '&                                    &',
         '&                                    &',
-        '&     xxxxxxxx@@xxxxxxxxxx           &',
+        '&     @xxxxxxx@@xxxxxxxxxx           &',
         '&                xxxxxxxxx           &',
         '&                xxxxxxxxx      x    &',
         '& xxxxxx   xxxxxxxxxxxxxxx           &',
         '&                xxxxxxxxx       -+  &',
         '&                xxxxxxxxx  z    ()  &',
         '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
-    ]
+    ],
+    [
+        '&                                     &',
+        '&                                     &',
+        '&       xxx@@xxxxxxxxx@@@@@xxxxx      &',
+        '&             x                       &',
+        '&             x     xxxxxxxxxxxxxxxxx &',
+        '&xxxxxxxxx    x                       &',
+        '&             xxxxxxxxxxxxxxxxxxx     &',
+        '&             x                       &',
+        '&     xxxxx@@xx           xxxxxx@@@xxx&',
+        '&             xxxxx                   &',
+        '&             xxxxxxxxxxxxx      x    &',
+        '&xxxxxxx   xxxx   xxxxxxxxxx          &',
+        '&             x-+ xxxxxxxxx           &',
+        '&             x()                     &',
+        '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!',
+    ],
+    [
+        '                       ============================                                                             ',
+        '     %%%                                          =                                                             ',
+        '              ==%%==                              =      ======                                                 ',
+        '                                                  =                                                             ',
+        '     ======                                       =                                                             ',
+        '              =======    ====                     =                 =====                                       ',
+        '                                 ====             =                                                             ',
+        '                                                  =                                                   q         ',
+        '                                         ====     =      =======                                                ',
+        '                                                  =                                                             ',
+        '                                                  =                                                             ',
+        '         %%%%%%%          =========================                                                             ',
+        '                                             ?        =       ^     =       ^     =                             ',
+        '===========================                  =====================================================-+c===========',
+        '                                                                                                  ()            ',
+        '                                                                                                                ',
+    ],
 
     ]
 
@@ -146,10 +192,17 @@ scene("game", ({level, score}) => {
         '#': [sprite('mushroom'), solid(), 'mushroom', body()],
         '!': [sprite('blue-block'), solid(), scale(0.5), 'obstacle'],
         '&': [sprite('blue-brick'), solid(), scale(0.5), 'obstacle'],
-        'z': [sprite('blue-evil-shroom'), solid(), scale(0.5), 'dangerous'],
+        'z': [sprite('blue-evil-shroom'), solid(), body(), origin('bot'), scale(0.5), 'dangerous'],
         '@': [sprite('blue-surprise'), solid(), scale(0.5), 'coin-surprise'],
         'x': [sprite('blue-steel'), solid(), scale(0.5), 'obstacle'],
         '?': [sprite('flower'), scale(0.5), 'flower'],
+        'q': [sprite('boss-right')],
+        'w': [sprite('boss-left')],
+        'p': [sprite('princess')],
+        'e': [sprite('single-cloud')],
+        'r': [sprite('cloud')],
+        'c': [sprite('big-castle'),area({ width: 10, height: 240 }),origin("bot"),'castle'],
+        'v': [sprite('small-castle'),area({ width: 10, height: 240 }),origin("bot"),'castle']
     }
 
     const gameLevel = addLevel(maps[level], LevelCfg)
@@ -235,10 +288,18 @@ scene("game", ({level, score}) => {
     })
 
     player.collides('pipe', () => {
+        if(proceed_info === null){
+            proceed_info = add([
+            text("press keyDown \nto proceed to \nthe next level"),
+            pos (player.pos.x - 45, player.pos.y - 60),
+            layer('ui'),
+            ])}
+
         keyPress('down', () => {
+            proceed_info = null
             go('game', {
                 level: (level + 1) % maps.length,
-                score: scoreLabel.value
+                score: scoreLabel.value,
             })
         })
     })
@@ -293,4 +354,6 @@ scene('lose', ({ score }) => {
     add([text(score,32), origin('center'), pos(width()/2,height()/2)])
 })
 
-start("game", { level: 0, score: 0 })
+
+
+start("game", { level: 7, score: 0 })

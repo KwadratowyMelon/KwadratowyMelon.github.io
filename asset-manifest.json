@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.726bcc54.css",
-    "main.js": "/static/js/main.346c9838.js",
+    "main.js": "/static/js/main.ad12cae6.js",
     "static/media/golden-frame-blue-background.jpg": "/static/media/golden-frame-blue-background.ae500e5044098b683b56.jpg",
     "static/media/moje_zdjecie.png": "/static/media/moje_zdjecie.b9cd97055b27b40bbcec.png",
     "static/media/block_panel.jpg": "/static/media/block_panel.e86cc6361ffa3296580a.jpg",
@@ -13,10 +13,10 @@
     "static/media/InterferometrMichelsona.png": "/static/media/InterferometrMichelsona.7803bbc1f27984436dd7.png",
     "index.html": "/index.html",
     "main.726bcc54.css.map": "/static/css/main.726bcc54.css.map",
-    "main.346c9838.js.map": "/static/js/main.346c9838.js.map"
+    "main.ad12cae6.js.map": "/static/js/main.ad12cae6.js.map"
   },
   "entrypoints": [
     "static/css/main.726bcc54.css",
-    "static/js/main.346c9838.js"
+    "static/js/main.ad12cae6.js"
   ]
 }
